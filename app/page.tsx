@@ -6,7 +6,6 @@ import { CodePreview } from "@/components/code-preview"
 import { Controls } from "@/components/controls"
 import { GRADIENTS } from "@/lib/constants"
 import type { CodeFormatterState } from "@/types/code-formatter"
-
 export default function CodeFormatter() {
   const previewRef = useRef<HTMLDivElement>(null as unknown as HTMLDivElement)
   const [state, setState] = useState<CodeFormatterState>({
