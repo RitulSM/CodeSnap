@@ -12,18 +12,10 @@ export type Theme =
   | "oceanicNext"
   | "material"
 
-export type GradientStyle = {
-  name: string  
-  from: string
-  to: string
-}
-
 export interface CodeFormatterState {
   code: string
   language: Language
   theme: Theme
   fontSize: number
-  gradient: GradientStyle
   darkMode: boolean
 }
-

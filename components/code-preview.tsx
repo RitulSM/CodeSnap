@@ -11,25 +11,24 @@ interface CodePreviewProps extends CodeFormatterState {
 }
 
 const themeMap = {
-  coldarkDark: themes.oneDark, // Using oneDark as fallback for coldarkDark
+  coldarkDark: themes.oneDark,
   dracula: themes.dracula,
   nightOwl: themes.nightOwl,
   oneDark: themes.oneDark,
   github: themes.github,
   vsDark: themes.vsDark,
   vsLight: themes.vsLight,
-  nord: themes.oneDark, // Using oneDark as fallback for nord
+  nord: themes.oneDark,
   oceanicNext: themes.oceanicNext,
-  material: themes.dracula // Using dracula as fallback for material
+  material: themes.dracula
 } as const
 
 export function CodePreview({ 
   code, 
   language, 
   theme, 
-  fontSize, 
-  gradient, 
- 
+  fontSize,
+  darkMode,
   className,
   previewRef 
 }: CodePreviewProps) {
@@ -38,14 +37,12 @@ export function CodePreview({
       ref={previewRef}
       className={cn(
         "relative overflow-hidden rounded-lg shadow-2xl",
-        "bg-gradient-to-r",
-        gradient.from,
-        gradient.to,
-        className,
+        darkMode ? "bg-[#1A202C]" : "bg-[#F7FAFC]",
+        className
       )}
     >
-      <div className="relative rounded-lg bg-zinc-950">
-        <div className="flex items-center gap-1.5 border-b border-zinc-800 px-4 py-2">
+      <div className="relative rounded-lg">
+        <div className="flex items-center gap-1.5 border-b border-[#E2E8F0] dark:border-[#2D3748] px-4 py-2">
           <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
           <div className="h-2.5 w-2.5 rounded-full bg-yellow-500" />
           <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
@@ -67,7 +64,7 @@ export function CodePreview({
               >
                 {tokens.map((line, i) => (
                   <div key={i} {...getLineProps({ line })} className="table-row">
-                    <span className="table-cell pr-4 text-sm text-zinc-500">{i + 1}</span>
+                    <span className="table-cell pr-4 text-sm text-[#A0AEC0] dark:text-[#4A5568]">{i + 1}</span>
                     <span className="table-cell">
                       {line.map((token, key) => (
                         <span key={key} {...getTokenProps({ token })} />
