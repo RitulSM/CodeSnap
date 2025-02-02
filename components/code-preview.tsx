@@ -29,7 +29,7 @@ export function CodePreview({
   theme, 
   fontSize, 
   gradient, 
-  darkMode, 
+ 
   className,
   previewRef 
 }: CodePreviewProps) {
